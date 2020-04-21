@@ -59,6 +59,7 @@ class StoresList extends React.Component {
                         )}
                     </Table.Body>
                 </Table>
+                <select value=""><options>1</options><options>2</options><options>3</options>...</select>
                 <IdComponent name="1" onClick={this.btnClick} />
                 <Footer />
             </Container>

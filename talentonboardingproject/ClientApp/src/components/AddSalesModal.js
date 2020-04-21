@@ -31,6 +31,7 @@ class AddSalesModal extends React.Component {
     snackbarClose = (e) => { this.setState({ snackbarOpen: false }) }
     handleSubmit = (event) => {
         event.preventDefault();
+        this.handleClose();
         fetch('api/Sales', {
             method: 'POST',
             headers: {

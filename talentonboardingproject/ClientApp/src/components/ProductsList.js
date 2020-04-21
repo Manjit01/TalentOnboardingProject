@@ -60,7 +60,8 @@ class ProductsList extends React.Component
                 </Table.Row>
                   )}
               </Table.Body>
-        </Table>
+            </Table>
+            <select value=""><options>1</options><options>2</options><options>3</options>...</select>
         <IdComponent name="1" onClick={this.btnClick}/>
         <Footer/>
       </Container>

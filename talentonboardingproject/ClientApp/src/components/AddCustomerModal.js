@@ -10,13 +10,16 @@ class AddCustomerModal extends React.Component {
         super(props)
         this.state = { snackbarOpen: false, snackbarMsg: '' }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.changeHandler = this.changeHandler.bind(this)
     }
     state = { modalOpen: false }
     handleOpen = () => this.setState({ modalOpen: true })
     handleClose = () => this.setState({ modalOpen: false })
+    changeHandler = (e) => { this.setState({ [e.target.name]: e.target.value }) }
     snackbarClose = (e) => { this.setState({ snackbarOpen: false }) }
     handleSubmit = (event) => {
         event.preventDefault();
+        this.handleClose();
         fetch('api/Customers/', {
             method: 'POST',
             headers: {
@@ -36,7 +39,7 @@ class AddCustomerModal extends React.Component {
         return (
             <div>
                 <Snackbar anchorOrigin={{ vertical: 'center', horizontal: 'center' }}
-                    open={this.state.snackbarOpen} autoHideDuration={3000} onClose={this.snackbarClose}
+                    open={this.state.snackbarOpen} autoHideDuration={1000} onClose={this.snackbarClose}
                     message={<span id="message-id">{this.state.snackbarMsg}</span>}
                     action={[<IconButton key="close" arial-label="Close" color="inherit"
                         onClick={this.snackbarClose}>X</IconButton>]} />
@@ -48,18 +51,19 @@ class AddCustomerModal extends React.Component {
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Field required>
                                 <label>Name</label>
-                                <Input name="name" type="text" placeholder='Full name' required />
+                                <Input name="name" type="text" placeholder='Full name' onChange={this.changeHandler} required/>
+                               
                             </Form.Field>
                             <Form.Field required>
                                 <label>Address</label>
-                                <Input name="address" placeholder='Address' required />
+                                <Input name="address" placeholder='Address' onChange={this.changeHandler} required/>
                             </Form.Field>
                             <Modal.Actions>
-                                
+                               
                                 <Button floated="right" type='submit' color='green' inverted>create
                           <label><Icon name='checkmark' /></label>
-                                </Button>
-                                <Button floated='right' color='black' secondary onClick={this.handleClose} inverted >
+                                </Button> 
+                                <Button floated='right' secondary onClick={this.handleClose} inverted >
                                     cancel
                         </Button>
                             </Modal.Actions>

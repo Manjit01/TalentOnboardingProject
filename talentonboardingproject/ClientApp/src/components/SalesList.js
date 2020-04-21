@@ -55,14 +55,25 @@ class SalesList extends React.Component {
                                 <Table.Cell>{sale.customerName}</Table.Cell>
                                 <Table.Cell>{sale.productName}</Table.Cell>
                                 <Table.Cell>{sale.storeName}</Table.Cell>
-                                <Table.Cell>{sale.dateSold}</Table.Cell>
-                                <Table.Cell><EditSalesModal saleid={sale.id} saledate={sale.dateSold} salecust={sale.customerName} saleprod={sale.productName} salestore={sale.storeName} /></Table.Cell>
+                                <Table.Cell>
+                                    {new Intl.DateTimeFormat('en-NZ', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: '2-digit'
+                                    }).format(new Date(sale.dateSold))}
+                                </Table.Cell>
+                                <Table.Cell><EditSalesModal saleid={sale.id} saledate={new Intl.DateTimeFormat('en-NZ', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: '2-digit'
+                                }).format(new Date(sale.dateSold))} salecust={sale.customerId} saleprod={sale.productId} salestore={sale.storeId}/></Table.Cell>
                                 <Table.Cell><DeleteSalesModal saleid={sale.id} /></Table.Cell>
                             </Table.Row>
                         )
                         }
                     </Table.Body>
                 </Table>
+                <select value=""><options>1</options><options>2</options><options>3</options>...</select>
                 <IdComponent name="1" onClick={this.btnClick} />
                 <Footer />
             </Container>

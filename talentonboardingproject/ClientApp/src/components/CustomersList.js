@@ -10,7 +10,10 @@ import IdComponent from './IdComponent'
 class CustomersList extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { custs: [], id: 1 }
+        this.state = {
+            custs: [], id: 1, itemPerPage: 5,
+            pageNumbers: [],
+            currentPage: 1}
         this.refreshList = this.refreshList.bind(this)
         this.btnClick = this.btnClick.bind(this)
     }
@@ -54,11 +57,16 @@ class CustomersList extends React.Component {
                                 <Table.Cell>{cust.address}</Table.Cell>
                                 <Table.Cell><EditCustomerModal custid={cust.id} custname={cust.name} custaddress={cust.address} /></Table.Cell>
                                 <Table.Cell><DeleteCustomerModal custid={cust.id} /></Table.Cell>
+                           
                             </Table.Row>
                         )}
                     </Table.Body>
                 </Table>
+                <select value=""><options>1</options><options>2</options><options>3</options>...</select>
                 <IdComponent name="1" onClick={this.btnClick} />
+              
+
+                
                 <Footer />
             </Container>
         )

@@ -24,7 +24,7 @@ namespace talentonboardingproject
 
             services.AddMvc().AddNewtonsoftJson();
             services.AddControllersWithViews();
-            services.AddDbContext<talentDBContext>(options => options.UseSqlServer("Server=DESKTOP-ARCCAQ7\\SQLEXPRESS;Initial Catalog=talentDB;Integrated Security=True;MultipleActiveResultSets=true"));
+            services.AddDbContext<talentDBContext>(options => options.UseSqlServer("Data Source=DESKTOP-ARCCAQ7\\SQLEXPRESS;Initial Catalog=talentDB;Integrated Security=True"));
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(policy =>

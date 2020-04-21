@@ -24,8 +24,9 @@ namespace talentonboardingproject.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-ARCCAQ7\\SQLEXPRESS;Initial Catalog=talentDB;Integrated Security=True");
+                //optionsBuilder.UseSqlServer("Server = tcp:talentproject.database.windows.net,1433; Initial Catalog = talentDB; Persist Security Info = False; User ID = user; Password =roop123*; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
             }
         }
 

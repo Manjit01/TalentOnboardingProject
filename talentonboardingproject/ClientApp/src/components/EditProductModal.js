@@ -19,6 +19,7 @@ class EditProductModal extends React.Component {
     snackbarClose = (e) => { this.setState({ snackbarOpen: false }) }
     handleSubmit = (e) => {
         e.preventDefault();
+        this.handleClose();
         fetch('api/Products/' + this.props.prodid,
             {
                 method: 'PUT',

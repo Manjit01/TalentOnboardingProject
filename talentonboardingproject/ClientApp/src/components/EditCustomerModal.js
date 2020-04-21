@@ -20,6 +20,7 @@ class EditCustomerModal extends React.Component {
     snackbarClose = (e) => { this.setState({ snackbarOpen: false }) }
     handleSubmit = (e) => {
         e.preventDefault();
+        this.handleClose();
         fetch('api/Customers/' + this.props.custid,
             {
                 method: 'PUT',
@@ -55,15 +56,15 @@ class EditCustomerModal extends React.Component {
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Field hidden>
                                 <label>Id</label>
-                                <Input name="id" placeholder='Id' value={this.state.id} defaultValue={this.props.custid} onChange={this.changeHandler} />
+                                <Input name="id" placeholder='Id' value={this.state.id} defaultValue={this.props.custid} onChange={this.changeHandler}/>
                             </Form.Field>
                             <Form.Field required>
                                 <label>Name</label>
-                                <Input name="name" placeholder='Full name' defaultValue={this.props.custname} onChange={this.changeHandler} />
+                                <Input name="name" placeholder='Full name' defaultValue={this.props.custname} onChange={this.changeHandler}/>
                             </Form.Field>
                             <Form.Field>
                                 <label>Address</label>
-                                <Input name="address" placeholder='Address' defaultValue={this.props.custaddress} onChange={this.changeHandler} />
+                                <Input name="address" placeholder='Address' defaultValue={this.props.custaddress} onChange={this.changeHandler}/>
                             </Form.Field>
                             <Modal.Actions>
                                

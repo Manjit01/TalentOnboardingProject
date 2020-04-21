@@ -15,6 +15,7 @@ class AddStoreModal extends React.Component {
     snackbarClose = (e) => { this.setState({ snackbarOpen: false }) }
     handleSubmit = (event) => {
         event.preventDefault();
+        this.handleClose();
         fetch('api/Stores', {
             method: 'POST',
             headers: {
@@ -43,18 +44,18 @@ class AddStoreModal extends React.Component {
                     onClose={this.handleClose}>
                     <Modal.Header>Create Store</Modal.Header>
                     <Modal.Content>
-                        <Form onSubmit={this.handleSubmit}>
+                        <Form method="POST" onSubmit={this.handleSubmit}>
                             <Form.Field>
                                 <label>Name</label>
-                                <Input name="name" placeholder='Store name' required />
+                                <Input name="name" placeholder='Store name' onChange={this.handleChange} />
                             </Form.Field>
                             <Form.Field>
                                 <label>Address</label>
-                                <Input name="address" placeholder='Address' required />
+                                <Input name="address" placeholder='Address' onChange={this.handleChange} />
                             </Form.Field>
                             <Modal.Actions>
                                 <Button floated="right" type='submit' color='green' inverted>create
-                          <label><Icon name='checkmark' /></label>
+                          <label><Icon name='checkmark' /></label> 
                                 </Button>
                                 <Button floated='right' secondary onClick={this.handleClose} inverted >
                                     cancel

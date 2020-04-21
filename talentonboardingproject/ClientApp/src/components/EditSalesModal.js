@@ -34,6 +34,7 @@ class EditSalesModal extends React.Component {
     snackbarClose = (e) => { this.setState({ snackbarOpen: false }) }
     handleSubmit = (e) => {
         e.preventDefault();
+        this.handleClose();
         fetch('api/sales/' + this.props.saleid,
             {
                 method: 'PUT',
@@ -78,19 +79,19 @@ class EditSalesModal extends React.Component {
                                 <Input name="dateSold" placeholder='yyyy-mm-dd' value={this.state.date} defaultValue={this.props.saledate} onChange={this.changeHandler} />
                             </Form.Field>
 
-                            <Form.Field name="customerId" label='Customers' control='select' defaultValue={this.props.salecust} >{this.state.custs.map(cust =>
-                                <option key={cust.id} value={cust.id}>{cust.name}</option>)}
+                            <Form.Field 
+                                name="customerId" label='Customers' control='select' onChange={this.changeHandler} defaultValue={this.props.salecust}>{this.state.custs.map(cust =>
+                                    <option key={cust.id} value={cust.id}>{cust.name}</option>)}
                             </Form.Field>
-
-                            <Form.Field name="productId" label='Products' control='select' defaultValue={this.props.saleprod}>{this.state.prodts.map(prod =>
+                            <Form.Field name="productId" label='Products' control='select' onChange={this.changeHandler} defaultValue={this.props.saleprod}>{this.state.prodts.map(prod =>
                                 <option key={prod.id} value={prod.id}>{prod.name}</option>)}
                             </Form.Field>
 
-                            <Form.Field name="storeId" label='Stores' control='select' defaultValue={this.props.salestore}>{this.state.stores.map(store =>
+                            <Form.Field name="storeId" label='Stores' control='select' onChange={this.changeHandler} defaultValue={this.props.salestore}>{this.state.stores.map(store =>
                                 <option key={store.id} value={store.id}>{store.name}</option>)}
                             </Form.Field>
                             <Modal.Actions>
-                                <Button floated='right' type='submit' color='green' inverted>edit
+                                <Button  floated='right' type='submit' color='green' inverted>edit
                             <label><Icon name='checkmark' /></label>
                                 </Button>
                                 <Button floated='right' secondary onClick={this.handleClose} inverted >
